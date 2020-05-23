@@ -4,6 +4,8 @@
 
 Simplify the process of deploying apps to your android devices. 
 
+Implementation for unity is coming soon.
+
 
 ## Setup
 

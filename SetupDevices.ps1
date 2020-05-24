@@ -8,28 +8,47 @@
 
   #restart server
   Write-Output -InputObject 'Restart Server'
-  adb.exe kill-server 2>$null | adb.exe start-server 2>$null
+  adb.exe kill-server 2>$null
+  adb.exe start-server 2>$null
+
+  Start-Sleep -Seconds 1
   
   Write-Output -InputObject 'Server running'
-  Write-Output -InputObject 'retrieving ip adress'
-  
-  #retrieve ip
   $file = '{0}\devicesIp.txt' -f $PSScriptRoot
+
+  #retrieve ip
+  Write-Output -InputObject 'retrieving ip adress'
   $device = adb.exe shell ip route 2>$null
 
   if(!$device)
   {
-    $confirmation = Read-Host -Prompt 'No device connected.(press any key to exit)'
+    Read-Host -Prompt 'No device connected.(press any key to exit)'
     return
   }
   
-  $pos = $device[2].IndexOf('src')
-  $ipAdrr = $device[2].Substring($pos+4)
-
-  $pos = $ipAdrr.IndexOf('metric')
-  $ipAdrr = $ipAdrr.Substring(0,$pos-2)
-  $ipAdrr = '{0}:5555' -f $ipAdrr
+  $ipAdrr = ""
+  foreach($entry in $device)
+  {
+    $pos = $entry.IndexOf('src')
+    if($pos -gt -1)
+    {
+      foreach($c in $entry.Substring($pos+4))
+      {
+        if($c -eq $null){
+          break
+        } 
+        $ipAdrr = $ipAdrr + $c
+      }
+    }
+  }
   
+  if($ipAdrr.IndexOf('metric') -gt -1){
+    $ipAdrr = $ipAdrr.Split(" ")[0];
+  }else {
+    $ipAdrr = $ipAdrr.Substring(0,$ipAdrr.Length-1)
+  }
+
+  $ipAdrr = '{0}:5555' -f $ipAdrr
   
   # start tcp
   $cmdOutput = adb.exe tcpip 5555
@@ -56,6 +75,8 @@ function Connect-Devices
   {
     adb.exe connect $deviceIp
   }
+
+  Remove-Item -Path $file
 }
 
 Function Show-Confirmation($messasge)
@@ -66,7 +87,6 @@ Function Show-Confirmation($messasge)
     return $true
   }
 }
-
 
 ### Script Entry ###
 Setup-Device

@@ -21,8 +21,8 @@ Function Deploy-App
     Write-Output -InputObject ('>> {0}' -f $devices[$i])
     $device = $devices[$i].Substring(0,$devices[$i].Length - 7)  
     adb.exe -s $device install -r $file
-    Write-Output -InputObject 'startig insalled app...'
-    adb.exe -s $devic shell monkey -p $packageName -c android.intent.category.LAUNCHER 1
+    Write-Output -InputObject 'startig installed app...'
+    adb.exe -s $device shell monkey -p $packageName -c android.intent.category.LAUNCHER 1
   }
 }
 

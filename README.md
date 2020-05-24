@@ -45,7 +45,10 @@ It should print a wall of text, this means adb driver is working.
   - now all devices are listening and you can delpoy new apks easily over wifi to all devices
  - execute DeployAppToAllDevices.ps1
  -  it loads and installs the apk in the same folder to all connected devices and starts the app
+ 
+ ##### setup
  ![setup](./img/setup.png)
+ ##### deploy (wifi)
  ![deploy](./img/deploy.png)
  
 

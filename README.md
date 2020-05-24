@@ -27,8 +27,9 @@ It should print a wall of text, this means adb driver is working.
 
 
 ### How to Deploy
-- download the 2 x .ps1 files
+- download the 2 x .ps1 files and packageName.txt
 - put them in the same folder where your apk is
+- open packageName.txt type in the package name e.g (com.CompanyName.ProductName)
 #### USB
 - execute DeployAppToAllDevices.ps1
 - it loads and installs the apk in the same folder to all connected devices
@@ -43,6 +44,6 @@ It should print a wall of text, this means adb driver is working.
   - now it asks if it should connect all devices press again y  
   - now all devices are listening and you can delpoy new apks easily over wifi to all devices
  - execute DeployAppToAllDevices.ps1
- -  it loads and installs the apk in the same folder to all connected devices 
+ -  it loads and installs the apk in the same folder to all connected devices and starts the app
 
 

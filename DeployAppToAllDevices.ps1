@@ -22,7 +22,7 @@ Function Deploy-App
     $device = $devices[$i].Substring(0,$devices[$i].Length - 7)  
     adb.exe -s $device install -r $file
     Write-Output -InputObject 'startig insalled app...'
-    adb.exe shell monkey -p $packageName -c android.intent.category.LAUNCHER 1
+    adb.exe -s $devic shell monkey -p $packageName -c android.intent.category.LAUNCHER 1
   }
 }
 

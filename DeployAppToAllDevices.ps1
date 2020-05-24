@@ -3,10 +3,12 @@
 Function Deploy-App
 {
   $file = Get-ChildItem -Path $PSScriptRoot -Filter *.apk
+  $packageFile = '{0}/packageName.txt' -f $PSScriptRoot
+  $packageName = Get-Content  $packageFile  -First 1
   
   if(!$file)
   {
-    Write-Output -InputObject 'No file found.'
+    Write-Output -InputObject 'File not found.'
     return
   }
   $fileName = $file.Name
@@ -19,6 +21,8 @@ Function Deploy-App
     Write-Output -InputObject ('>> {0}' -f $devices[$i])
     $device = $devices[$i].Substring(0,$devices[$i].Length - 7)  
     adb.exe -s $device install -r $file
+    Write-Output -InputObject 'startig insalled app...'
+    adb.exe shell monkey -p $packageName -c android.intent.category.LAUNCHER 1
   }
 }
 

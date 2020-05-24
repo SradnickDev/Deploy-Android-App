@@ -18,7 +18,7 @@ Add this folder to the your system variables.
  - type in search field "path"
  - click on "Edit System Variables"
  - add the folder path to the Path variable
-![enter image description here](https://docs.telerik.com/teststudio/img/features/test-runners/add-path-environment-variables/fig10.png)
+![](https://docs.telerik.com/teststudio/img/features/test-runners/add-path-environment-variables/fig10.png)
 
 
 
@@ -45,5 +45,8 @@ It should print a wall of text, this means adb driver is working.
   - now all devices are listening and you can delpoy new apks easily over wifi to all devices
  - execute DeployAppToAllDevices.ps1
  -  it loads and installs the apk in the same folder to all connected devices and starts the app
+ ![setup](./img/setup.png)
+ ![deploy](./img/deploy.png)
+ 
 
 

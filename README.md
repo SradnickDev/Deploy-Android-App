@@ -1,17 +1,15 @@
 
 # Deploy-Android-App 
-[![Status: Work-in-progress](https://img.shields.io/badge/status-work--in--progress-orange)](https://github.com/SradnickDev/Deploy-Android-App)
 
 Simplify the process of deploying apps to your android devices. 
 
-Implementation for unity is coming soon.
 
 
 ## Setup
 
 You'll need a adb driver and one or more android devices, working wifi or usb cabel.
 
-Download the adb driver [here](https://dl.google.com/android/repository/platform-tools_r30.0.1-windows.zip) , entpack the zip and place the files e.g. under c:/ADB/ .
+Download the adb driver [here](https://dl.google.com/android/repository/platform-tools_r30.0.1-windows.zip) , unzip the zip and place the files e.g. under c:/ADB/ .
 
 Add this folder to the your system variables.
  - press windows button
